@@ -48,10 +48,15 @@
 			<artifactId>mahout-examples</artifactId>
 			<version>0.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-wikipedia</artifactId>
+			<version>3.0.3</version>
+		</dependency>
 	</dependencies>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
+		<sourceDirectory>src</sourceDirectory>
 		<outputDirectory>target/classes</outputDirectory>
 	</build>
 </project>
