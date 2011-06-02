@@ -2,13 +2,14 @@ package com.orange.place.analysis.domain;
 
 public class Post {
 
-	private long sotryId;
+	private String postId;
 
-	public long getSotryId() {
-		return sotryId;
+	public String getPostId() {
+		return postId;
 	}
 
-	public void setSotryId(long sotryId) {
-		this.sotryId = sotryId;
+	public void setPostId(String postId) {
+		this.postId = postId;
 	}
+
 }

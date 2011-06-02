@@ -7,10 +7,13 @@
   <classpathentry kind="var" path="M2_REPO/org/antlr/antlr-runtime/3.1.3/antlr-runtime-3.1.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/cassandra/deps/avro/1.4.0-cassandra-1/avro-1.4.0-cassandra-1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/cassandra/cassandra-all/0.7.4/cassandra-all-0.7.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-cli/commons-cli/1.1/commons-cli-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.2/commons-codec-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.7/commons-digester-1.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-pool/commons-pool/1.5.3/commons-pool-1.5.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/googlecode/concurrentlinkedhashmap/concurrentlinkedhashmap-lru/1.1/concurrentlinkedhashmap-lru-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/r08/guava-r08.jar"/>
@@ -24,7 +27,14 @@
   <classpathentry kind="var" path="M2_REPO/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/safehaus/jug/jug/2.0.0/jug-2.0.0-asl.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/jul-to-slf4j/1.6.1/jul-to-slf4j-1.6.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.2/junit-4.8.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/cassandra/deps/libthrift/0.5.0/libthrift-0.5.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-benchmark/3.0.3/lucene-benchmark-3.0.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-core/3.0.3/lucene-core-3.0.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-demos/3.0.3/lucene-demos-3.0.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-highlighter/3.0.3/lucene-highlighter-3.0.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-memory/3.0.3/lucene-memory-3.0.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-wikipedia/3.0.3/lucene-wikipedia-3.0.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/mahout/mahout-buildtools/0.4/mahout-buildtools-0.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/mahout/mahout-core/0.4/mahout-core-0.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/mahout/mahout-examples/0.4/mahout-examples-0.4.jar"/>
@@ -36,5 +46,6 @@
   <classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/antlr/stringtemplate/3.2/stringtemplate-3.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/github/stephenc/eaio-uuid/uuid/3.2.0/uuid-3.2.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>

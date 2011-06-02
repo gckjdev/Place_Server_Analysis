@@ -4,23 +4,23 @@ import java.util.Map;
 
 public class UserSimilarity {
 
-	private long userId;
+	private String userId;
 
-	private Map<Long, Double> similarity;
+	private Map<String, Double> similarity;
 
-	public long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public Map<Long, Double> getSimilarity() {
+	public Map<String, Double> getSimilarity() {
 		return similarity;
 	}
 
-	public void setSimilarity(Map<Long, Double> similarity) {
+	public void setSimilarity(Map<String, Double> similarity) {
 		this.similarity = similarity;
 	}
 
