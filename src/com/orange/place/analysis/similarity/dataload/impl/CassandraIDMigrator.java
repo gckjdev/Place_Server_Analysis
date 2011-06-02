@@ -1,4 +1,4 @@
-package com.orange.place.analysis.similarity.impl;
+package com.orange.place.analysis.similarity.dataload.impl;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.AbstractIDMigrator;

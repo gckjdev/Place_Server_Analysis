@@ -1,4 +1,4 @@
-package com.orange.place.analysis.similarity;
+package com.orange.place.analysis.similarity.dataload;
 
 import org.apache.mahout.cf.taste.model.DataModel;
 

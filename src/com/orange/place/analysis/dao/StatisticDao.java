@@ -2,10 +2,8 @@ package com.orange.place.analysis.dao;
 
 import java.util.Map;
 
-import org.apache.lucene.search.Similarity;
-
+import com.orange.place.analysis.domain.Similarity;
 import com.orange.place.analysis.domain.UserPostStatistic;
-import com.orange.place.analysis.domain.UserSimilarity;
 import com.orange.place.analysis.domain.UserStatistic;
 
 //TODO: all this statistic is used in runtime, need high performance storage
@@ -15,7 +13,7 @@ public class StatisticDao {
 
 	}
 
-	public void saveUserSimilarity(UserSimilarity similarity) {
+	public void saveUserSimilarity(Similarity similarity) {
 		String colFamily = "place_user";
 		String rowKey = similarity.getUserId();
 		String colName = "similarity";

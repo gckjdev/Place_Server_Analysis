@@ -2,7 +2,7 @@ package com.orange.place.analysis.domain;
 
 import java.util.Map;
 
-public class UserSimilarity {
+public class Similarity {
 
 	private String userId;
 
