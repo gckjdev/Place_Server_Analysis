@@ -1,40 +1,30 @@
 package com.orange.place.analysis.dao;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-import com.orange.common.cassandra.CassandraClient;
+import me.prettyprint.hector.api.beans.HColumn;
 
-public class PostDao {
+import com.orange.place.analysis.constants.DBConstants;
 
-	private CassandraClient cassandraClient;
-
-	public void setCassandraClient(CassandraClient cassandraClient) {
-		this.cassandraClient = cassandraClient;
-	}
+public class PostDao extends AbstractCassandraDao {
 
 	// = new CassandraClient(DBConstants.SERVER, DBConstants.CLUSTERNAME,
 	// DBConstants.KEYSPACE);
 
-	public List<String> findRelatedPostByUserId(String userId) {
+	public List<String> getRelatedPostByUserId(String userId) {
 		if (userId == null) {
 			throw new IllegalArgumentException("userId should not be null");
 		}
 
-		// String colFamily = "idx_user_posts";
-		// Selector selector = pool.createSelector();
-		// List<Column> columns = selector.getColumnsFromRow(colFamily,
-		// Bytes.fromUuid(UUID.fromString(userId)), false,
-		// ConsistencyLevel.ONE);
-		//
-		List<String> storyIds = new ArrayList<String>();
-		// Iterator<Column> it = columns.iterator();
-		// while (it.hasNext()) {
-		// Column col = it.next();
-		// String value = TimeUUIDHelper.toUUID(col.getName()).toString();
-		// // String value = new String(col.getName());
-		// storyIds.add(value);
-		// }
-		return storyIds;
+		// TODO: no limitation for related post
+		UUID startUUID = null;
+		int max = DBConstants.UNLIMITED_COUNT;
+
+		List<HColumn<UUID, String>> resultList = cassandraClient
+				.getColumnKeyByRange(DBConstants.INDEX_USER_POST, userId,
+						startUUID, max);
+
+		return getColumnNames(resultList);
 	}
 }

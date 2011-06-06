@@ -1,18 +1,22 @@
 package com.orange.place.analysis.dao;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-import com.orange.common.cassandra.CassandraClient;
+import me.prettyprint.hector.api.beans.Rows;
 
-public class UserDao {
-	private CassandraClient cassandraClient;
+import com.orange.place.analysis.constants.DBConstants;
 
-	public void setCassandraClient(CassandraClient cassandraClient) {
-		this.cassandraClient = cassandraClient;
-	}
+public class UserDao extends AbstractCassandraDao {
 
 	public Iterator<String> findAllUserId() {
-		return new ArrayList<String>().iterator();
+
+		int max = DBConstants.UNLIMITED_COUNT;
+		Rows<String, String, String> rows = cassandraClient.getMultiRow(
+				DBConstants.USER, max);
+
+		List<String> userList = getKeys(rows);
+		return userList.iterator();
 	}
+
 }

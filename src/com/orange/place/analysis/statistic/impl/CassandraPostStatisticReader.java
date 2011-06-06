@@ -16,7 +16,7 @@ public class CassandraPostStatisticReader implements PostStatisticReader {
 	}
 
 	public Map<String, Integer> getPostStatistic(String userId) {
-		List<String> posts = postDao.findRelatedPostByUserId(userId);
+		List<String> posts = postDao.getRelatedPostByUserId(userId);
 
 		Map<String, Integer> statistic = new HashMap<String, Integer>();
 		if (!posts.isEmpty()) {
