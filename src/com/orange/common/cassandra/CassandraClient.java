@@ -169,6 +169,34 @@ public class CassandraClient {
 		return result;
 	}
 
+	public List<HColumn<String, String>> getColumnKey(String columnFamilyName,
+			String key, int size) {
+		SliceQuery<String, String, String> q = HFactory.createSliceQuery(
+				keyspace, ss, ss, ss);
+		if (q == null) {
+			return null;
+		}
+
+		q.setColumnFamily(columnFamilyName).setKey(key)
+				.setRange(null, null, true, size);
+
+		QueryResult<ColumnSlice<String, String>> r = q.execute();
+		if (r == null) {
+			return null;
+		}
+
+		List<HColumn<String, String>> result = r.get().getColumns();
+
+		// print for test TODO rem the code
+		System.out.println("get data result size=" + result.size());
+		for (HColumn<String, String> data : result) {
+			System.out.println("column[" + data.getName() + "]="
+					+ data.getValue());
+		}
+
+		return result;
+	}
+
 	public List<HColumn<UUID, String>> getColumnKeyByRange(
 			String columnFamilyName, String key, UUID start, int size) {
 		SliceQuery<String, UUID, String> q = HFactory.createSliceQuery(

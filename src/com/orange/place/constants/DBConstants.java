@@ -1,8 +1,8 @@
-package com.orange.place.analysis.constants;
+package com.orange.place.constants;
 
 public class DBConstants {
 
-	public static final String SERVER = "192.168.1.101:9160";
+	public static final String SERVER = "localhost:9160";
 	public static final String CLUSTERNAME = "Test Cluster";
 
 	public static final String KEYSPACE = "PlaceKS";
@@ -118,5 +118,5 @@ public class DBConstants {
 	public static final String USER_SIMILARITY = "place_user_similarity";
 	public static final String USER_POST_STATISTIC = "place_user_post_stat";
 
-	public static final String F_USER_POST_TOTOAL = "totalPost";
+	public static final String F_USER_POST_STATISTIC_TOTOAL = "totalPost";
 }

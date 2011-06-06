@@ -5,7 +5,7 @@ import java.util.List;
 
 import me.prettyprint.hector.api.beans.Rows;
 
-import com.orange.place.analysis.constants.DBConstants;
+import com.orange.place.constants.DBConstants;
 
 public class UserDao extends AbstractCassandraDao {
 
@@ -18,5 +18,4 @@ public class UserDao extends AbstractCassandraDao {
 		List<String> userList = getKeys(rows);
 		return userList.iterator();
 	}
-
 }

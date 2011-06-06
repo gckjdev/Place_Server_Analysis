@@ -5,19 +5,15 @@ import java.util.UUID;
 
 import me.prettyprint.hector.api.beans.HColumn;
 
-import com.orange.place.analysis.constants.DBConstants;
+import com.orange.place.constants.DBConstants;
 
 public class PostDao extends AbstractCassandraDao {
 
-	// = new CassandraClient(DBConstants.SERVER, DBConstants.CLUSTERNAME,
-	// DBConstants.KEYSPACE);
-
-	public List<String> getRelatedPostByUserId(String userId) {
+	public List<String> findRelatedPostByUserId(String userId) {
 		if (userId == null) {
 			throw new IllegalArgumentException("userId should not be null");
 		}
 
-		// TODO: no limitation for related post
 		UUID startUUID = null;
 		int max = DBConstants.UNLIMITED_COUNT;
 
