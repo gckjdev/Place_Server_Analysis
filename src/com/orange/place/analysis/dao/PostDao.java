@@ -10,10 +10,7 @@ import com.orange.place.constants.DBConstants;
 public class PostDao extends AbstractCassandraDao {
 
 	public List<String> findRelatedPostByUserId(String userId) {
-		if (userId == null) {
-			throw new IllegalArgumentException("userId should not be null");
-		}
-
+		checkStringParameter(userId, "userId");
 		UUID startUUID = null;
 		int max = DBConstants.UNLIMITED_COUNT;
 

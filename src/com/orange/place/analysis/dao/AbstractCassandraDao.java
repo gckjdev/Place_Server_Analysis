@@ -8,6 +8,8 @@ import me.prettyprint.hector.api.beans.HColumn;
 import me.prettyprint.hector.api.beans.Row;
 import me.prettyprint.hector.api.beans.Rows;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.orange.common.cassandra.CassandraClient;
 
 public class AbstractCassandraDao {
@@ -38,4 +40,11 @@ public class AbstractCassandraDao {
 		}
 		return userList;
 	}
+
+	protected void checkStringParameter(String parameter, String name) {
+		if (StringUtils.isEmpty(parameter)) {
+			throw new IllegalArgumentException(name + " should not be empty");
+		}
+	}
+
 }

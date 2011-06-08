@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class LogParser {
 
 	/**
-	 * logRecord : date;user_id;post_id;place_id;type
+	 * logRecord : date;user_id;post_id;place_id;type;....
 	 * 
 	 * @param logRecord
 	 * @return

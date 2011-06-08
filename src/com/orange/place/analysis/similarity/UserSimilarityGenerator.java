@@ -3,6 +3,7 @@ package com.orange.place.analysis.similarity;
 import java.util.Iterator;
 
 import org.apache.mahout.cf.taste.model.DataModel;
+import org.springframework.beans.factory.annotation.Required;
 
 import com.orange.place.analysis.dao.StatisticDao;
 import com.orange.place.analysis.domain.Similarity;
@@ -20,26 +21,32 @@ public class UserSimilarityGenerator {
 	public void generate() {
 		DataModel dataModel = userSimilarityDataLoader.getDataModel();
 
-		Iterator<Similarity> it = similarityCalculator.getSimilarity(dataModel);
+		if (dataModel != null) {
+			Iterator<Similarity> it = similarityCalculator
+					.getSimilarity(dataModel);
 
-		// TODO: Remove codes if CassandraSimilarityCaluclator ready.
-		while (it.hasNext()) {
-			Similarity similarity = it.next();
-			// write Similarity
-			statisticDao.saveUserSimilarity(similarity);
+			// TODO: Remove codes if CassandraSimilarityCaluclator ready.
+			while (it.hasNext()) {
+				Similarity similarity = it.next();
+				// write Similarity
+				statisticDao.saveUserSimilarity(similarity);
+			}
 		}
 	}
 
+	@Required
 	public void setUserSimilarityDataLoader(
 			UserSimilarityDataLoader userSimilarityDataLoader) {
 		this.userSimilarityDataLoader = userSimilarityDataLoader;
 	}
 
+	@Required
 	public void setSimilarityCalculator(
 			SimilarityCalculator similarityCalculator) {
 		this.similarityCalculator = similarityCalculator;
 	}
 
+	@Required
 	public void setStatisticDao(StatisticDao statisticDao) {
 		this.statisticDao = statisticDao;
 	}

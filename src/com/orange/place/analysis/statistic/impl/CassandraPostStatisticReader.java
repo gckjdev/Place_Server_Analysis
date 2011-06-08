@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import com.orange.place.analysis.dao.PostDao;
 import com.orange.place.analysis.statistic.PostStatisticReader;
 
@@ -11,6 +13,7 @@ public class CassandraPostStatisticReader implements PostStatisticReader {
 
 	private PostDao postDao;
 
+	@Required
 	public void setPostDao(PostDao postDao) {
 		this.postDao = postDao;
 	}

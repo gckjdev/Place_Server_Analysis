@@ -16,6 +16,7 @@ import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Required;
 
 import com.orange.place.analysis.similarity.dataload.UserSimilarityDataLoader;
 
@@ -25,7 +26,7 @@ public class LogFileUserSimilarityDataLoader implements
 	public static final Logger log = LoggerFactory
 			.getLogger(LogFileUserSimilarityDataLoader.class);
 
-	private static final String TAB_SEPARATOR = "    ";
+	private static final char TAB_SEPARATOR = '\t';
 
 	private String dataModelFilePath;
 
@@ -36,6 +37,8 @@ public class LogFileUserSimilarityDataLoader implements
 	private LogFileFinder logFileFinder;
 
 	public DataModel getDataModel() {
+		log.debug("start to LogFileUserSimilarityDataLoader#getDataModel");
+
 		List<File> logFiles = logFileFinder.getLogFile();
 
 		for (File logFile : logFiles) {
@@ -121,26 +124,27 @@ public class LogFileUserSimilarityDataLoader implements
 				TAB_SEPARATOR);
 		sb.append(iDMigrator.toLongID(logParseResult.getPostId())).append(
 				TAB_SEPARATOR);
+		sb.append("1");
 		String content = sb.toString();
 		return content;
 	}
 
+	@Required
 	public void setDataModelFilePath(String dataModelFilePath) {
 		this.dataModelFilePath = dataModelFilePath;
 	}
 
-	public void setIDMigrator(CassandraIDMigrator idMigrator) {
-		this.iDMigrator = idMigrator;
+	@Required
+	public void setiDMigrator(CassandraIDMigrator iDMigrator) {
+		this.iDMigrator = iDMigrator;
 	}
 
-	public LogParser getLogParser() {
-		return logParser;
-	}
-
+	@Required
 	public void setLogParser(LogParser logParser) {
 		this.logParser = logParser;
 	}
 
+	@Required
 	public void setLogFileFinder(LogFileFinder logFileFinder) {
 		this.logFileFinder = logFileFinder;
 	}

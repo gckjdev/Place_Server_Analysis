@@ -1,5 +1,6 @@
 package com.orange.common.cassandra;
 
+import java.beans.ConstructorProperties;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -33,6 +34,7 @@ public class CassandraClient {
 
 	final static int MAX_COUNT_FOR_MULTI_ROW = 50;
 
+	@ConstructorProperties({ "serverNameAndPort", "clusterName", "keyspaceName" })
 	public CassandraClient(String serverNameAndPort, String clusterName,
 			String keyspaceName) {
 		this.initServer(serverNameAndPort, clusterName);

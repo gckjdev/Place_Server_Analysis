@@ -1,1 +1,4 @@
-date;user_id;post_id;place_id;type
+date;user_id_1;post_id_1;place_id;1
+date;user_id_1;post_id_2;place_id;1
+date;user_id_2;post_id_1;place_id;3
+date;user_id_3;post_id_2;place_id;3

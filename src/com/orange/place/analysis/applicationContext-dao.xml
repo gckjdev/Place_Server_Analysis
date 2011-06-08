@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- cassandra data source -->
+	<bean id="cassandraClient" class="com.orange.common.cassandra.CassandraClient">
+		<constructor-arg name="serverNameAndPort" value="localhost:9160" />
+		<constructor-arg name="clusterName" value="Test Cluster" />
+		<constructor-arg name="keyspaceName" value="PlaceKS" />
+	</bean>
+
+	<!-- dao -->
+	<bean id="postDao" class="com.orange.place.analysis.dao.PostDao">
+		<property name="cassandraClient" ref="cassandraClient" />
+	</bean>
+	<bean id="statisticDao" class="com.orange.place.analysis.dao.StatisticDao">
+		<property name="cassandraClient" ref="cassandraClient" />
+	</bean>
+	<bean id="userDao" class="com.orange.place.analysis.dao.UserDao">
+		<property name="cassandraClient" ref="cassandraClient" />
+	</bean>
+</beans>

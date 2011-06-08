@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Required;
 
 import com.orange.place.analysis.dao.UserDao;
 import com.orange.place.analysis.domain.UserPostStatistic;
@@ -64,14 +65,17 @@ public class PostStatisticGenerator {
 				userId, total });
 	}
 
+	@Required
 	public void setPostStatisticReader(PostStatisticReader postStatisticReader) {
 		this.postStatisticReader = postStatisticReader;
 	}
 
+	@Required
 	public void setPostStatisticWriter(PostStatisticWriter postStatisticWriter) {
 		this.postStatisticWriter = postStatisticWriter;
 	}
 
+	@Required
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}

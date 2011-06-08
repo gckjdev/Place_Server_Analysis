@@ -21,8 +21,8 @@ public class StatisticDao extends AbstractCassandraDao {
 		String rowKey = userId;
 		String columnName = postId;
 
-		checkStringParameter(rowKey);
-		checkStringParameter(columnName);
+		checkStringParameter(rowKey, "rowKey");
+		checkStringParameter(columnName, "columnName");
 
 		String value = cassandraClient.getColumnValue(colFamily, rowKey,
 				columnName);
@@ -44,7 +44,7 @@ public class StatisticDao extends AbstractCassandraDao {
 		String rowKey = userId;
 		String columnName = DBConstants.F_USER_POST_STATISTIC_TOTOAL;
 
-		checkStringParameter(rowKey);
+		checkStringParameter(rowKey, "rowKey");
 
 		String value = cassandraClient.getColumnValue(colFamily, rowKey,
 				columnName);
@@ -86,7 +86,7 @@ public class StatisticDao extends AbstractCassandraDao {
 		String rowKey = similarity.getUserId();
 		Map<String, Double> similarityByUser = similarity.getSimilarity();
 
-		checkStringParameter(rowKey);
+		checkStringParameter(rowKey, "rowKey");
 		if (similarityByUser == null) {
 			throw new IllegalArgumentException(
 					"similarityByUser should not be null");
@@ -102,12 +102,6 @@ public class StatisticDao extends AbstractCassandraDao {
 		}
 		cassandraClient.insert(colFamily, rowKey, columns);
 
-	}
-
-	private void checkStringParameter(String rowKey) {
-		if (StringUtils.isEmpty(rowKey)) {
-			throw new IllegalArgumentException("rowKey should not be empty");
-		}
 	}
 
 	private int readInteractionCount(String value) {

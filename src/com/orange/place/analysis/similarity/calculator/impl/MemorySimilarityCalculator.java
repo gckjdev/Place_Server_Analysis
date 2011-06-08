@@ -14,6 +14,8 @@ import org.apache.mahout.cf.taste.model.UpdatableIDMigrator;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.util.Assert;
 
 import com.orange.place.analysis.domain.Similarity;
 import com.orange.place.analysis.similarity.calculator.SimilarityCalculator;
@@ -28,7 +30,7 @@ public class MemorySimilarityCalculator implements SimilarityCalculator {
 	private UpdatableIDMigrator iDMigrator;
 
 	public Iterator<Similarity> getSimilarity(DataModel dataModel) {
-
+		Assert.notNull(dataModel, "dataModel should be init");
 		List<Similarity> result = EMPTY_LIST;
 		try {
 			// TODO: not needed codes
@@ -64,5 +66,10 @@ public class MemorySimilarityCalculator implements SimilarityCalculator {
 		}
 
 		return result.iterator();
+	}
+
+	@Required
+	public void setiDMigrator(UpdatableIDMigrator iDMigrator) {
+		this.iDMigrator = iDMigrator;
 	}
 }

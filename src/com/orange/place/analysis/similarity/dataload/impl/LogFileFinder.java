@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Required;
+
 public class LogFileFinder {
 
 	private String logFolderPath;
@@ -37,10 +39,12 @@ public class LogFileFinder {
 		return result;
 	}
 
+	@Required
 	public void setLogFolderPath(String logFolderPath) {
 		this.logFolderPath = logFolderPath;
 	}
 
+	@Required
 	public void setLogFilePattern(String logFilePatternValue) {
 		logFilePattern = Pattern.compile(logFilePatternValue);
 	}

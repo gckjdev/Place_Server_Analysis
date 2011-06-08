@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- import -->
+	<import
+		resource="classpath:/com/orange/place/analysis/applicationContext-dao.xml" />
+
+	<!-- common -->
+	<bean id="springContextUtil" class="com.orange.common.context.SpringContextUtil" />
+	<!-- similarity -->
+	<bean id="logParser"
+		class="com.orange.place.analysis.similarity.dataload.impl.LogParser">
+	</bean>
+
+	<bean id="logFileFinder"
+		class="com.orange.place.analysis.similarity.dataload.impl.LogFileFinder">
+		<property name="logFolderPath" value="C:\gckj\Place_Server_Analysis\data\" />
+		<property name="logFilePattern" value=".*\.log.*" />
+	</bean>
+
+	<bean id="cassandraIDMigrator"
+		class="com.orange.place.analysis.similarity.dataload.impl.CassandraIDMigrator">
+		<property name="cassandraClient" ref="cassandraClient" />
+	</bean>
+
+	<bean id="logFileUserSimilarityDataLoader"
+		class="com.orange.place.analysis.similarity.dataload.impl.LogFileUserSimilarityDataLoader">
+		<property name="dataModelFilePath"
+			value="C:\gckj\Place_Server_Analysis\data-output\similarity.log" />
+		<property name="iDMigrator" ref="cassandraIDMigrator" />
+		<property name="logParser" ref="logParser" />
+		<property name="logFileFinder" ref="logFileFinder" />
+	</bean>
+	<bean id="memorySimilarityCalculator"
+		class="com.orange.place.analysis.similarity.calculator.impl.MemorySimilarityCalculator">
+		<property name="iDMigrator" ref="cassandraIDMigrator" />
+	</bean>
+
+	<bean id="userSimilarityGenerator"
+		class="com.orange.place.analysis.similarity.UserSimilarityGenerator">
+		<property name="userSimilarityDataLoader" ref="logFileUserSimilarityDataLoader" />
+		<property name="similarityCalculator" ref="memorySimilarityCalculator" />
+		<property name="statisticDao" ref="statisticDao" />
+	</bean>
+
+	<!-- statistic -->
+	<bean id="cassandraPostStatisticReader"
+		class="com.orange.place.analysis.statistic.impl.CassandraPostStatisticReader">
+		<property name="postDao" ref="postDao" />
+	</bean>
+	<bean id="cassandraPostStatisticWriter"
+		class="com.orange.place.analysis.statistic.impl.CassandraPostStatisticWriter">
+		<property name="statisticDao" ref="statisticDao" />
+	</bean>
+	<bean id="postStatisticGenerator"
+		class="com.orange.place.analysis.statistic.PostStatisticGenerator">
+		<property name="postStatisticReader" ref="cassandraPostStatisticReader" />
+		<property name="postStatisticWriter" ref="cassandraPostStatisticWriter" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+
+	<!-- job -->
+	<bean id="analysisJob" class="com.orange.place.analysis.job.AnalysisJob">
+		<property name="postStatisticGenerator" ref="postStatisticGenerator" />
+		<property name="userSimilarityGenerator" ref="userSimilarityGenerator" />
+	</bean>
+
+</beans>

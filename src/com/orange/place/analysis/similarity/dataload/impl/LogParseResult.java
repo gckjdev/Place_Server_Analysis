@@ -1,5 +1,7 @@
 package com.orange.place.analysis.similarity.dataload.impl;
 
+import com.orange.place.analysis.domain.PostType;
+
 public class LogParseResult {
 
 	private String logDate;
@@ -50,5 +52,9 @@ public class LogParseResult {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public PostType getPostType() {
+		return PostType.getType(this.type);
 	}
 }

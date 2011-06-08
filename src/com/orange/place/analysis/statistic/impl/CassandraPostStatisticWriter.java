@@ -1,5 +1,7 @@
 package com.orange.place.analysis.statistic.impl;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import com.orange.place.analysis.dao.StatisticDao;
 import com.orange.place.analysis.domain.UserPostStatistic;
 import com.orange.place.analysis.domain.UserStatistic;
@@ -20,5 +22,10 @@ public class CassandraPostStatisticWriter implements PostStatisticWriter {
 
 	public void saveUserPostStatistic(UserPostStatistic statistic) {
 		statisticDao.saveUserPostStatistic(statistic);
+	}
+
+	@Required
+	public void setStatisticDao(StatisticDao statisticDao) {
+		this.statisticDao = statisticDao;
 	}
 }
