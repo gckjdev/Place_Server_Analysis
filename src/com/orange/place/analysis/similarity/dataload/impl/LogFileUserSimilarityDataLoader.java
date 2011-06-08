@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import com.orange.place.analysis.similarity.dataload.UserSimilarityDataLoader;
 
-
 public class LogFileUserSimilarityDataLoader implements
 		UserSimilarityDataLoader {
 
@@ -114,6 +113,7 @@ public class LogFileUserSimilarityDataLoader implements
 
 	private String getDataModelFormat(LogParseResult logParseResult)
 			throws TasteException {
+		// TODO: iDMigrator here is not very good, move to else?
 		iDMigrator.initialize(Arrays.asList(logParseResult.getUserId(),
 				logParseResult.getPostId()));
 		StringBuffer sb = new StringBuffer();

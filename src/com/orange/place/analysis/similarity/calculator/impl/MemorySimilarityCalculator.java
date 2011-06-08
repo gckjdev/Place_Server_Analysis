@@ -1,4 +1,4 @@
-package com.orange.place.analysis.similarity.geneate.impl;
+package com.orange.place.analysis.similarity.calculator.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
-import org.apache.mahout.cf.taste.impl.model.GenericDataModel;
 import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.model.UpdatableIDMigrator;
@@ -17,14 +16,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.orange.place.analysis.domain.Similarity;
-import com.orange.place.analysis.similarity.geneate.SimilarityGenerator;
+import com.orange.place.analysis.similarity.calculator.SimilarityCalculator;
 
-public class MemorySimilarityGenerator implements SimilarityGenerator {
+public class MemorySimilarityCalculator implements SimilarityCalculator {
 
 	private static final ArrayList<Similarity> EMPTY_LIST = new ArrayList<Similarity>();
 
 	private final Logger log = LoggerFactory
-			.getLogger(MemorySimilarityGenerator.class);
+			.getLogger(MemorySimilarityCalculator.class);
 
 	private UpdatableIDMigrator iDMigrator;
 
@@ -32,8 +31,10 @@ public class MemorySimilarityGenerator implements SimilarityGenerator {
 
 		List<Similarity> result = EMPTY_LIST;
 		try {
-			DataModel model = new GenericDataModel(
-					GenericDataModel.toDataMap(dataModel));
+			// TODO: not needed codes
+			// DataModel model = new GenericDataModel(
+			// GenericDataModel.toDataMap(dataModel));
+			DataModel model = dataModel;
 			UserSimilarity userSimilarity = new TanimotoCoefficientSimilarity(
 					model);
 
