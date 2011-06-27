@@ -39,6 +39,9 @@ public class LogFileUserSimilarityDataLoader implements
 	public DataModel getDataModel() {
 		log.debug("start to LogFileUserSimilarityDataLoader#getDataModel");
 
+		// init the folder
+		prepareDataModelFile();
+
 		List<File> logFiles = logFileFinder.getLogFile();
 
 		for (File logFile : logFiles) {
@@ -78,10 +81,30 @@ public class LogFileUserSimilarityDataLoader implements
 		return createDataModel();
 	}
 
+	/**
+	 * Create an empty file for dataModelFilePath to avoid no file created when
+	 * there's no data exist.
+	 */
+	private void prepareDataModelFile() {
+		File dataModelFile = new File(dataModelFilePath);
+		File dataModelFolder = new File(dataModelFile.getParent());
+		if (!dataModelFolder.exists()) {
+			dataModelFolder.mkdirs();
+		}
+
+		if (dataModelFile.exists()) {
+			// dataModelFile.createNewFile();
+			dataModelFile.delete();
+		}
+	}
+
 	private DataModel createDataModel() {
 		DataModel model = null;
 		try {
-			model = new FileDataModel(new File(dataModelFilePath));
+			File dataModelFile = new File(dataModelFilePath);
+			if (dataModelFile.exists()) {
+				model = new FileDataModel(dataModelFile);
+			}
 		} catch (IOException e) {
 			log.error(
 					"LogFileUserSimilarityDataLoader#getDataModel#FileDataModel TasteException",

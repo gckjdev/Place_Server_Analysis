@@ -43,7 +43,7 @@
 			<artifactId>mahout-buildtools</artifactId>
 			<version>${org.apache.mahout.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.mahout</groupId>
 			<artifactId>mahout-math</artifactId>
@@ -140,5 +140,21 @@
 		<testSourceDirectory>test</testSourceDirectory>
 		<sourceDirectory>src</sourceDirectory>
 		<outputDirectory>target/classes</outputDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>test</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 	</build>
 </project>

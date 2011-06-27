@@ -69,7 +69,8 @@ public class LogFileFinderTest {
 	public void testGetLogFile_SampleData() {
 		finder = new LogFileFinder();
 		finder.setLogFilePattern(".*\\.log.*");
-		finder.setLogFolderPath("C:\\gckj\\Place_Server_Analysis\\data\\");
+		//finder.setLogFolderPath("C:\\gckj\\Place_Server_Analysis\\data\\");
+		finder.setLogFolderPath("C:\\work\\tc\\gckj\\Place_Server_Analysis\\data\\");
 		List<File> logFiles = finder.getLogFile();
 		Assert.assertEquals(1, logFiles.size());
 	}
@@ -79,6 +80,26 @@ public class LogFileFinderTest {
 		String regex = ".*\\.log.*";
 		Pattern p = Pattern.compile(regex);
 		String value = "example.log";
+		Matcher m = p.matcher(value);
+
+		Assert.assertTrue(regex + " should match : " + value, m.matches());
+	}
+
+	@Test
+	public void testAnalysisLogPattern() {
+		String regex = "analysis.log\\..*";
+		Pattern p = Pattern.compile(regex);
+		String value = "analysis.log";
+		Matcher m = p.matcher(value);
+
+		Assert.assertFalse(regex + " should not match : " + value, m.matches());
+	}
+
+	@Test
+	public void testAnalysisLogPatternMatch() {
+		String regex = "analysis.log\\..*";
+		Pattern p = Pattern.compile(regex);
+		String value = "analysis.log.2011-06-27-22-55";
 		Matcher m = p.matcher(value);
 
 		Assert.assertTrue(regex + " should match : " + value, m.matches());
