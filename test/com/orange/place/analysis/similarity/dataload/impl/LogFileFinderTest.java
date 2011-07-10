@@ -96,6 +96,16 @@ public class LogFileFinderTest {
 	}
 
 	@Test
+	public void testAnalysisLogPatternCurrent() {
+		String regex = ".*\\\\analysis.log.*";
+		Pattern p = Pattern.compile(regex);
+		String value = "C:\tmp\\analysis.log";
+		Matcher m = p.matcher(value);
+
+		Assert.assertTrue(regex + " should not match : " + value, m.matches());
+	}
+
+	@Test
 	public void testAnalysisLogPatternMatch() {
 		String regex = "analysis.log\\..*";
 		Pattern p = Pattern.compile(regex);

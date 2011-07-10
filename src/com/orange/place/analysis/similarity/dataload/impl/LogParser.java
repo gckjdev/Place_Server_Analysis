@@ -17,8 +17,8 @@ public class LogParser {
 			String[] values = logRecord.split(";");
 			result.setLogDate(values[0]);
 			result.setUserId(values[1]);
-			result.setPostId(values[2]);
-			result.setPlaceId(values[3]);
+			result.setPlaceId(values[2]);
+			result.setPostId(values[3]);
 			result.setType(Integer.valueOf(values[4]));
 		}
 		return result;

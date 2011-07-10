@@ -16,10 +16,9 @@
 
 	<bean id="logFileFinder"
 		class="com.orange.place.analysis.similarity.dataload.impl.LogFileFinder">
-		<property name="logFolderPath" value="C:\tmp" />
-	<!-- <property name="logFilePattern" value=".*\.log.*" /> --><!-- 
-		<property name="logFilePattern" value=".*analysis.log.*" /> -->
-		<property name="logFilePattern" value=".*analysis.log.*" /> 
+		<property name="logFolderPath" value="C:\gckj\Place_Server_Analysis\data\" />
+	<!-- <property name="logFilePattern" value=".*\.log.*" /> -->
+		<property name="logFilePattern" value=".*\analysis.log\..*" />
 	</bean>
 
 	<bean id="cassandraIDMigrator"

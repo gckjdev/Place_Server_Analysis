@@ -68,4 +68,36 @@ public class CassandraIDMigratorTest {
 				userIdResult);
 	}
 
+	@Test
+	public void testToPostID1() throws TasteException {
+		String userId = "cea5a560-aa76-11e0-8458-002481b373b7";
+		long userIdLong = migrator.toLongID(userId);
+		System.out.println(userIdLong);
+		migrator.storeMapping(userIdLong, userId);
+		String userIdResult = migrator.toStringID(userIdLong);
+		Assert.assertEquals("userId should be the same after convert.", userId,
+				userIdResult);
+	}
+
+	@Test
+	public void testToPostID2() throws TasteException {
+		String userId = "ceb62020-aa76-11e0-8458-002481b373b7";
+		long userIdLong = migrator.toLongID(userId);
+		System.out.println(userIdLong);
+		migrator.storeMapping(userIdLong, userId);
+		String userIdResult = migrator.toStringID(userIdLong);
+		Assert.assertEquals("userId should be the same after convert.", userId,
+				userIdResult);
+	}
+
+	@Test
+	public void testTo() throws TasteException {
+		String userId = "ce9a0ca0-aa76-11e0-8458-002481b373b7";
+		long userIdLong = migrator.toLongID(userId);
+		System.out.println(userIdLong);
+		migrator.storeMapping(userIdLong, userId);
+		String userIdResult = migrator.toStringID(userIdLong);
+		Assert.assertEquals("userId should be the same after convert.", userId,
+				userIdResult);
+	}
 }

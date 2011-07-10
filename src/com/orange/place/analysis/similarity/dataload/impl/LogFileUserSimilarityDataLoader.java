@@ -44,38 +44,46 @@ public class LogFileUserSimilarityDataLoader implements
 
 		List<File> logFiles = logFileFinder.getLogFile();
 
-		for (File logFile : logFiles) {
-			BufferedReader reader = null;
-			BufferedWriter writer = null;
-			try {
-				reader = new BufferedReader(new FileReader(logFile));
-				writer = new BufferedWriter(new FileWriter(dataModelFilePath));
-				String logRecord = reader.readLine();
-				while (logRecord != null) {
-					if (!StringUtils.isEmpty(logRecord)) {
-						LogParseResult logParseResult = logParser
-								.parse(logRecord);
-						writer.write(getDataModelFormat(logParseResult));
-						writer.newLine();
-						logRecord = reader.readLine();
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(dataModelFilePath));
+			for (File logFile : logFiles) {
+				BufferedReader reader = null;
+
+				try {
+					reader = new BufferedReader(new FileReader(logFile));
+
+					String logRecord = reader.readLine();
+					while (logRecord != null) {
+						if (!StringUtils.isEmpty(logRecord)) {
+							LogParseResult logParseResult = logParser
+									.parse(logRecord);
+							writer.write(getDataModelFormat(logParseResult));
+							writer.newLine();
+							logRecord = reader.readLine();
+						}
 					}
+				} catch (FileNotFoundException e) {
+					log.error(
+							"LogFileUserSimilarityDataLoader#getDataModel FileNotFoundException",
+							e);
+				} catch (IOException e) {
+					log.error(
+							"LogFileUserSimilarityDataLoader#getDataModel IOException",
+							e);
+				} catch (TasteException e) {
+					log.error(
+							"LogFileUserSimilarityDataLoader#getDataModel TasteException",
+							e);
+				} finally {
+					close(reader);
 				}
-			} catch (FileNotFoundException e) {
-				log.error(
-						"LogFileUserSimilarityDataLoader#getDataModel FileNotFoundException",
-						e);
-			} catch (IOException e) {
-				log.error(
-						"LogFileUserSimilarityDataLoader#getDataModel IOException",
-						e);
-			} catch (TasteException e) {
-				log.error(
-						"LogFileUserSimilarityDataLoader#getDataModel TasteException",
-						e);
-			} finally {
-				close(reader);
-				close(writer);
 			}
+		} catch (IOException e1) {
+			throw new RuntimeException(
+					"failed in creating similarity writer.", e1);
+		}finally {
+			close(writer);
 		}
 
 		return createDataModel();
